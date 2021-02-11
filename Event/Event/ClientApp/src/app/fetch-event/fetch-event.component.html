@@ -1,0 +1,35 @@
+<h1>Event Data</h1>
+<!--
+<p>This component demonstrates fetching Event data from the server.</p>
+  -->
+<p *ngIf="loading$ | async"><em>Loading...</em></p>
+
+<p>
+    <a [routerLink]="['/register-event']">Create New</a>
+</p>
+
+<table class='table'>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let eve of eveList | async">
+        <td>{{ eve.eventId }}</td>
+        <td>{{ eve.name }}</td>
+        <td>{{ eve.description }}</td>
+        <td>{{ eve.date }}</td>
+        <td>{{ eve.city }}</td>
+        <td>
+        <td>
+          <a [routerLink]="['/event/edit/', eve.eventId]">Edit</a> |
+          <a [routerLink]="" (click)="delete(eve.eventId)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+</table>
